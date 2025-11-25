@@ -5,6 +5,8 @@ Adapted in part from https://github.com/BrunoBelucci/cohirf-arxiv/
 
 ## Installing Julia
 
+See here https://julialang.org/downloads/#about_juliaup. Install with `juliaup` is the recommended and easiest way.
+
 ## Package installation
 Launch Julia and create environment (inside the REPL, type `]` on the keyboard to access the Pkg interface)
 ```
