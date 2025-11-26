@@ -1,5 +1,5 @@
 # CoHiRF.jl
-A Julia implementation of "CoHiRF: A Scalable and Interpretable Clustering Framework for High-Dimensional Data"
+A Julia implementation of "CoHiRF: A Scalable and Interpretable Clustering Framework for High-Dimensional Data" https://arxiv.org/abs/2502.00380
 
 Adapted in part from https://github.com/BrunoBelucci/cohirf-arxiv/
 
@@ -8,9 +8,13 @@ Adapted in part from https://github.com/BrunoBelucci/cohirf-arxiv/
 See here https://julialang.org/downloads/#about_juliaup. Install with `juliaup` is the recommended and easiest way.
 
 ## Package installation
-Launch Julia and create environment (inside the REPL, type `]` on the keyboard to access the Pkg interface)
+Launch Julia and create environment (inside the REPL, type `]` on the keyboard to access the Pkg interface):
 ```
 (@v1.12) pkg> activate test_cohirf
+```
+
+Then add the package using its GitHub URL (the package is not registered) :
+```
 (test_cohirf) pkg> add https://github.com/WilliBee/CoHiRF.jl/
 ```
 
@@ -33,13 +37,15 @@ results.cluster_representatives # Indices of medoid of cluster
 results.n_iterations            # Number of iterations to convergence
 ```
 
-## Launch tests
+## Testing the package
+
+In a terminal :
 ```
 cd CoHiRF.jl
 julia
 ```
 
-Inside REPL, type `]` on the keyboard to access the Pkg interface. Then activate package environment
+Inside the Julia REPL, type `]` on the keyboard to access the Pkg interface. Then activate package environment
 
 ```
 (@v1.12) pkg> activate .
@@ -55,28 +61,31 @@ And then simply type
 (CoHiRF) pkg> test
 ```
 
-## Launch benchmarks
+## Launching benchmarks
 
-
+Benchmarks from the paper were partially reproduced. First with real data from the OpenML datasets :
 ```
 cd CoHiRF.jl
 julia --project=benchmark --threads=8 benchmark/openml_benchmarks.jl
 ```
 
+
+Then with synthetic data to test for scalability :
 ```
 cd CoHiRF.jl
 julia --project=benchmark benchmark/scalability_benchmarks.jl
 ```
 
+See below for the results.
+
 ## Benchmark results
 
 Benchmarks ran on a M4 MacbookPro with 10 CPU 10 GPU 24GB of RAM with no explicit multithreading (for the CoHiRF and KMeans).
-Multithreading activating for hyperparameters search.
+Multithreading activated for hyperparameters search.
 
 ### Julia benchmarks on Synthetic Data
 ```
-┌ Info: Generated
-│   n_samples = 14427
+┌   n_samples = 14427
 └   n_features = 100
 cohirf_ari = = 1.0
 CoHiRF runtime
@@ -84,8 +93,7 @@ CoHiRF runtime
 KMeans runtime
   21.790 ms (159 allocations: 1.66 MiB)
 
-┌ Info: Generated
-│   n_samples = 14427
+┌   n_samples = 14427
 └   n_features = 347
 cohirf_ari = = 1.0
 CoHiRF runtime
@@ -93,8 +101,7 @@ CoHiRF runtime
 KMeans runtime
   68.512 ms (159 allocations: 1.73 MiB)
 
-┌ Info: Generated
-│   n_samples = 14427
+┌   n_samples = 14427
 └   n_features = 1202
 cohirf_ari = = 1.0
 CoHiRF runtime
@@ -102,8 +109,7 @@ CoHiRF runtime
 KMeans runtime
   235.660 ms (159 allocations: 1.96 MiB)
 
-┌ Info: Generated
-│   n_samples = 14427
+┌   n_samples = 14427
 └   n_features = 4163
 cohirf_ari = = 1.0
 CoHiRF runtime
@@ -111,8 +117,7 @@ CoHiRF runtime
 KMeans runtime
   1.058 s (159 allocations: 3.13 MiB)
 
-┌ Info: Generated
-│   n_samples = 14427
+┌   n_samples = 14427
 └   n_features = 14427
 cohirf_ari = = 1.0
 CoHiRF runtime
@@ -120,8 +125,7 @@ CoHiRF runtime
 KMeans runtime
   3.632 s (159 allocations: 5.75 MiB)
 
-┌ Info: Generated
-│   n_samples = 14427
+┌   n_samples = 14427
 └   n_features = 50000
 cohirf_ari = = 1.0
 CoHiRF runtime
@@ -129,8 +133,7 @@ CoHiRF runtime
 KMeans runtime
   12.795 s (159 allocations: 15.50 MiB)
 
-┌ Info: Generated
-│   n_samples = 100
+┌   n_samples = 100
 └   n_features = 14427
 cohirf_ari = = 1.0
 CoHiRF runtime
@@ -138,8 +141,7 @@ CoHiRF runtime
 KMeans runtime
   24.388 ms (146 allocations: 4.14 MiB)
 
-┌ Info: Generated
-│   n_samples = 347
+┌   n_samples = 347
 └   n_features = 14427
 cohirf_ari = = 1.0
 CoHiRF runtime
@@ -147,8 +149,7 @@ CoHiRF runtime
 KMeans runtime
   86.131 ms (159 allocations: 4.17 MiB)
 
-┌ Info: Generated
-│   n_samples = 1202
+┌   n_samples = 1202
 └   n_features = 14427
 cohirf_ari = = 1.0
 CoHiRF runtime
@@ -156,8 +157,7 @@ CoHiRF runtime
 KMeans runtime
   294.977 ms (159 allocations: 4.25 MiB)
 
-┌ Info: Generated
-│   n_samples = 4163
+┌   n_samples = 4163
 └   n_features = 14427
 cohirf_ari = = 1.0
 CoHiRF runtime
@@ -165,8 +165,7 @@ CoHiRF runtime
 KMeans runtime
   1.109 s (159 allocations: 4.94 MiB)
 
-┌ Info: Generated
-│   n_samples = 14427
+┌   n_samples = 14427
 └   n_features = 14427
 cohirf_ari = = 1.0
 CoHiRF runtime
@@ -174,8 +173,7 @@ CoHiRF runtime
 KMeans runtime
   3.881 s (159 allocations: 5.75 MiB)
 
-┌ Info: Generated
-│   n_samples = 50000
+┌   n_samples = 50000
 └   n_features = 14427
 cohirf_ari = = 1.0
 CoHiRF runtime
