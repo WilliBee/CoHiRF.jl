@@ -1,7 +1,9 @@
 # CoHiRF.jl
 A Julia implementation of "CoHiRF: A Scalable and Interpretable Clustering Framework for High-Dimensional Data" https://arxiv.org/abs/2502.00380
 
-Adapted in part from https://github.com/BrunoBelucci/cohirf-arxiv/
+Algorithm and benchmarks adapted in part from https://github.com/BrunoBelucci/cohirf-arxiv/, most notably :
+- `benchmark/cohirf.py` is a 1-to-1 copy of https://github.com/BrunoBelucci/cohirf-arxiv/blob/main/cohirf/models/cohirf.py
+- `benchmark/dataset_preprocessor.py` has been adapted from https://github.com/BrunoBelucci/cohirf-arxiv/blob/main/cohirf/experiment/open_ml_clustering_experiment.py
 
 ## Installing Julia
 
